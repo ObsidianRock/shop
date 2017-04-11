@@ -6,5 +6,6 @@ __pycache__
 
 shop/settings.py
 db.sqlite3
+products
 
 media
