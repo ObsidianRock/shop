@@ -4,6 +4,7 @@ from .models import Category, Product
 
 from cart.forms import CartAddProductForm
 
+
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
@@ -31,7 +32,7 @@ def product_detail(request, id, slug):
                                 translations__language_code=language,
                                 translations__slug=slug,
                                 available=True)
-    
+
     cart_product_form = CartAddProductForm()
     return render(request,
                   'shop/product/detail.html',
