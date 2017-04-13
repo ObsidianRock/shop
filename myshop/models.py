@@ -4,8 +4,8 @@ from parler.models import TranslatableModel, TranslatedFields
 
 
 class Category(TranslatableModel):
-    name = models.CharField(max_length=200, db_index=True)
-    slug = models.SlugField(max_length=200, db_index=True, unique=True)
+    #name = models.CharField(max_length=200, db_index=True)
+    #slug = models.SlugField(max_length=200, db_index=True, unique=True)
 
     translations = TranslatedFields(
 
@@ -30,9 +30,9 @@ class Category(TranslatableModel):
 
 class Product(TranslatableModel):
     category = models.ForeignKey(Category, related_name='products')
-    name = models.CharField(max_length=200, db_index=True)
-    slug = models.SlugField(max_length=200, db_index=True)
-    description = models.TextField(blank=True)
+    #name = models.CharField(max_length=200, db_index=True)
+    #slug = models.SlugField(max_length=200, db_index=True)
+    #description = models.TextField(blank=True)
 
     translations = TranslatedFields(
         name=models.CharField(max_length=200, db_index=True),
@@ -51,7 +51,7 @@ class Product(TranslatableModel):
         return reverse('myshop:product_detail', args=[self.id, self.slug])
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('-created',)
         #index_together = (('id', 'slug'),)
 
     def __str__(self):
